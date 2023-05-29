@@ -12,18 +12,35 @@ bethany.HourlyRate = 50;
 bethany.NumberOfHoursWorked = 100;
 bethany.Wage = -10;
 
+
+bethany.PerformWork();
+bethany.PerformWork();
+bethany.ReceiveWage();
 bethany.DisplayEmployeeDetails();
-bethany.PerformWork(2);
-bethany.PerformWork(3);
-bethany.ReceiveWage(4);
 
 Console.WriteLine("\nCreating next employee");
 
-george.DisplayEmployeeDetails();
-george.PerformWork(4);
-george.PerformWork(5);
-george.PerformWork(6);
-george.ReceiveWage(7);
 
+george.PerformWork();
+george.PerformWork();
+george.PerformWork();
+george.ReceiveWage();
+george.DisplayEmployeeDetails();
+
+Employee.taxRate = 0.02;
+
+bethany.PerformWork();
+bethany.PerformWork();
+bethany.ReceiveWage();
+bethany.DisplayEmployeeDetails();
+
+Console.WriteLine("\nCreating next employee");
+
+
+george.PerformWork();
+george.PerformWork();
+george.PerformWork();
+george.ReceiveWage();
+george.DisplayEmployeeDetails();
 
 Console.ReadLine();

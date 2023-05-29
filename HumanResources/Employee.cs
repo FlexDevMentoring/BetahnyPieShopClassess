@@ -21,6 +21,7 @@ namespace BetahnyPieShopClassess.HumanResources
         private DateTime birthday;
 
         private EmployeeType employeeType;
+        public static double taxRate = 0.15;
 
         public string FirstName  //it is Properties
         {
@@ -98,10 +99,11 @@ namespace BetahnyPieShopClassess.HumanResources
         {
         }
 
-        public int PerformWork(int hours)
+        public void PerformWork()
         {
-            NumberOfHoursWorked += hours;
-            return NumberOfHoursWorked;
+            NumberOfHoursWorked++;
+
+            Console.WriteLine($"{FirstName} {LastName} is now working!");
         }
 
         public void StopWorking()
@@ -109,20 +111,24 @@ namespace BetahnyPieShopClassess.HumanResources
             Console.WriteLine($"{FirstName} {LastName} has stop working!");
         }
 
-        public double ReceiveWage(int hoursWorked)
+        public double ReceiveWage()
         {
-            Wage = NumberOfHoursWorked * HourlyRate;
+            double wageBeforeTax = NumberOfHoursWorked * HourlyRate;
+            double taxAmount = wageBeforeTax * taxRate;
+            Wage = wageBeforeTax - taxAmount;
 
             Console.WriteLine($"The Wage for {NumberOfHoursWorked} hours of work is {Wage}.");
             NumberOfHoursWorked = 0;
-            hoursWorked = NumberOfHoursWorked;
+            
 
             return Wage;
         }
 
         public void DisplayEmployeeDetails()
         {
-            Console.WriteLine($"\nFirst name: {FirstName}\nLast name: {LastName}\nEmail: {Email}\nBirthday: {Birthday.ToShortDateString()}\nEmployee type: {EmployeeType}\n");
+            Console.WriteLine($"\nFirst name: {FirstName}\nLast name: {LastName}\nEmail: " +
+                $"{Email}\nBirthday: {Birthday.ToShortDateString()}\nEmployee type: {EmployeeType}\n" +
+                $"TaxRate: {taxRate}");
         }
     }
 }
