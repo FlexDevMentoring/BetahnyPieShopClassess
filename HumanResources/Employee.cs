@@ -17,11 +17,12 @@ namespace BetahnyPieShopClassess.HumanResources
 
         private int numberOfHoursWorked;
         private double wage;
-        private double hourlyRate;
+        private double? hourlyRate;
         private DateTime birthday;
 
         private EmployeeType employeeType;
         public static double taxRate = 0.15;
+        private const double maxAmountHoursWOrked = 1000; //beacouse I can put the value later I must define const variable  s here
 
         public string FirstName  //it is Properties
         {
@@ -67,7 +68,7 @@ namespace BetahnyPieShopClassess.HumanResources
             }
         }
 
-        public double HourlyRate
+        public double? HourlyRate
         {
             get { return hourlyRate; }
             set { hourlyRate = value; }
@@ -84,7 +85,7 @@ namespace BetahnyPieShopClassess.HumanResources
             set { employeeType = value; }
         }
 
-        public Employee(string first, string last, string em, DateTime bd, EmployeeType emType, double rate)
+        public Employee(string first, string last, string em, DateTime bd, EmployeeType emType, double? rate)
         //po dodadaniu właściwości prywatnych zamiast publicznych pól zmianiamy, żeby z nich korzystać zmieniłem nazwy na wielką literę
         {
             FirstName = first;
@@ -92,8 +93,8 @@ namespace BetahnyPieShopClassess.HumanResources
             Email = em;
             Birthday = bd;
             EmployeeType = emType;
-            HourlyRate = rate;
-        }
+            HourlyRate = rate ?? 10; //I use default value if value if null is past in (I use no coalescenci operator" 
+        }                            //If value is null use value on the right side of the question mark
 
         public Employee(string first, string last, string em, DateTime bd, EmployeeType emType) : this(first, last, em, bd, emType, 0)
         {
@@ -113,7 +114,7 @@ namespace BetahnyPieShopClassess.HumanResources
 
         public double ReceiveWage()
         {
-            double wageBeforeTax = NumberOfHoursWorked * HourlyRate;
+            double wageBeforeTax = NumberOfHoursWorked * HourlyRate.Value;
             double taxAmount = wageBeforeTax * taxRate;
             Wage = wageBeforeTax - taxAmount;
 
@@ -129,6 +130,11 @@ namespace BetahnyPieShopClassess.HumanResources
             Console.WriteLine($"\nFirst name: {FirstName}\nLast name: {LastName}\nEmail: " +
                 $"{Email}\nBirthday: {Birthday.ToShortDateString()}\nEmployee type: {EmployeeType}\n" +
                 $"TaxRate: {taxRate}");
+        }
+
+        public static void DisplayTaxRate()
+        {
+            Console.WriteLine($"The current tax rate is {taxRate}");
         }
     }
 }
