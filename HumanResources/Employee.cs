@@ -20,7 +20,7 @@ namespace BetahnyPieShopClassess.HumanResources
         private double? hourlyRate;
         private DateTime birthday;
 
-        private EmployeeType employeeType;
+
         public static double taxRate = 0.15;
         private const double maxAmountHoursWOrked = 1000; //beacouse I can put the value later I must define const variable  s here
 
@@ -79,26 +79,17 @@ namespace BetahnyPieShopClassess.HumanResources
             set { birthday = value; }
 
         }
-        public EmployeeType EmployeeType
-        {
-            get { return employeeType; }
-            set { employeeType = value; }
-        }
 
-        public Employee(string first, string last, string em, DateTime bd, EmployeeType emType, double? rate)
+        public Employee(string first, string last, string em, DateTime bd, double? rate)
         //po dodadaniu właściwości prywatnych zamiast publicznych pól zmianiamy, żeby z nich korzystać zmieniłem nazwy na wielką literę
         {
             FirstName = first;
             LastName = last;
             Email = em;
             Birthday = bd;
-            EmployeeType = emType;
+
             HourlyRate = rate ?? 10; //I use default value if value if null is past in (I use no coalescenci operator" 
         }                            //If value is null use value on the right side of the question mark
-
-        public Employee(string first, string last, string em, DateTime bd, EmployeeType emType) : this(first, last, em, bd, emType, 0)
-        {
-        }
 
         public void PerformWork()
         {
@@ -116,25 +107,31 @@ namespace BetahnyPieShopClassess.HumanResources
         {
             double wageBeforeTax = NumberOfHoursWorked * HourlyRate.Value;
             double taxAmount = wageBeforeTax * taxRate;
+
             Wage = wageBeforeTax - taxAmount;
 
             Console.WriteLine($"The Wage for {NumberOfHoursWorked} hours of work is {Wage}.");
             NumberOfHoursWorked = 0;
-            
+
 
             return Wage;
         }
 
         public void DisplayEmployeeDetails()
         {
-            Console.WriteLine($"\nFirst name: {FirstName}\nLast name: {LastName}\nEmail: " +
-                $"{Email}\nBirthday: {Birthday.ToShortDateString()}\nEmployee type: {EmployeeType}\n" +
+            Console.WriteLine($"First name: {FirstName}\nLast name: {LastName}\nEmail: " +
+                $"{Email}\nBirthday: {Birthday.ToShortDateString()}\n" +
                 $"TaxRate: {taxRate}");
         }
 
         public static void DisplayTaxRate()
         {
             Console.WriteLine($"The current tax rate is {taxRate}");
+        }
+
+        public virtual void GiveBonus()
+        {
+            Console.WriteLine($"{FirstName}{LastName} received a generic bonus of 100!");
         }
     }
 }
