@@ -26,6 +26,19 @@ namespace BetahnyPieShopClassess.HumanResources
                 Console.WriteLine($"Manager {FirstName} {LastName} received a generic bonus of 500!");   
             else
                 Console.WriteLine($"Manager {FirstName} {LastName}  received a generic bonus of 250!");
-        }   
+        }
+
+        public override double ReceiveWage()
+        {
+            double wageBeforeTax = NumberOfHoursWorked * 2 * HourlyRate.Value;
+            double taxAmount = wageBeforeTax * taxRate;
+
+            Wage = wageBeforeTax - taxAmount;
+
+            Console.WriteLine($"The wage for {NumberOfHoursWorked} hours of work is {Wage}.");
+            NumberOfHoursWorked = 0;
+
+            return Wage;
+        }
     }
 }

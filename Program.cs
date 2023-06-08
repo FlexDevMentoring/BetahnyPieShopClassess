@@ -10,7 +10,7 @@ namespace BetahnyPieShopClassess
             Console.WriteLine("Creating an employee");
             Console.WriteLine("----------------");
 
-            Employee bethany = new Employee("Bethany", "Smith", "bethany@snowball.be", new DateTime(1979, 1, 16), 25);
+            Manager bethany = new Manager("Bethany", "Smith", "bethany@snowball.be", new DateTime(1979, 1, 16), 25);
 
             Manager mary = new Manager("Mary", "Jones", "mary@snowball.be", new DateTime(1965, 1, 14), 30);
 
@@ -53,8 +53,12 @@ namespace BetahnyPieShopClassess
                 employee.ReceiveWage();
                 employee.GiveBonus();
                 Console.WriteLine("\n");
+                Console.WriteLine(employee.ToString());
                 //employee.AttendingMangementMeeting();
             }
+
+            object o1 = new Manager("Object", "Jones", "mary@snowball.be", new DateTime(1965, 1, 14), 30);
+            o1.ToString();
 
             Console.ReadLine();
         }
