@@ -6,7 +6,15 @@ using System.Threading.Tasks;
 
 namespace BetahnyPieShopClassess.HumanResources
 {
-    internal interface IEmployee
+    public interface IEmployee : IComparable
+
     {
+        double ReceiveWage();
+        void GiveBonus();
+        void PerformWork();
+        void StopWorking();
+        void DisplayEmployeeDetails();
+        void GiveCompliment();
+
     }
 }
