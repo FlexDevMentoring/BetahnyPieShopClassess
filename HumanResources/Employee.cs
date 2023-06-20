@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BetahnyPieShopClassess.HumanResources
 {
-    public class Employee
+    public abstract class Employee
     {
 
 
@@ -103,19 +103,8 @@ namespace BetahnyPieShopClassess.HumanResources
             Console.WriteLine($"{FirstName} {LastName} has stop working!");
         }
 
-        public double ReceiveWage()
-        {
-            double wageBeforeTax = NumberOfHoursWorked * HourlyRate.Value;
-            double taxAmount = wageBeforeTax * taxRate;
+        public abstract double ReceiveWage();
 
-            Wage = wageBeforeTax - taxAmount;
-
-            Console.WriteLine($"The Wage for {NumberOfHoursWorked} hours of work is {Wage}.");
-            NumberOfHoursWorked = 0;
-
-
-            return Wage;
-        }
 
         public void DisplayEmployeeDetails()
         {
