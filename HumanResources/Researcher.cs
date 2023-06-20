@@ -10,7 +10,7 @@ namespace BetahnyPieShopClassess.HumanResources
 {
     public class Researcher : Employee
     {
-        public Researcher(string first, string last, string em, DateTime bd, double? rate) : base(first, last, em, bd, rate)
+        public Researcher(int id, string first, string last, string em, DateTime bd, double? rate) : base(id, first, last, em, bd, rate)
         {
         }
 
@@ -21,7 +21,7 @@ namespace BetahnyPieShopClassess.HumanResources
             Console.WriteLine($"Researcher {FirstName}{LastName} has invented a new pie taste!");
         }
 
-        public override double ReceiveWage()
+        public double ReceiveWage()
         {
             double wageBeforeTax = NumberOfHoursWorked * 2 * HourlyRate.Value;
             double taxAmount = wageBeforeTax * taxRate;

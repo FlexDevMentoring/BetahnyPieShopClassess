@@ -8,9 +8,9 @@ namespace BetahnyPieShopClassess.HumanResources
 {
     public class StoreManager : Employee
     {
-        public StoreManager(string first, string last, string em, DateTime bd, double? rate) : base(first, last, em, bd, rate)
+        public StoreManager(int id, string first, string last, string em, DateTime bd, double? rate) : base(id, first, last, em, bd, rate)
         { }
-        public override double ReceiveWage()
+        public double ReceiveWage()
         {
             double wageBeforeTax = NumberOfHoursWorked * 2 * HourlyRate.Value;
             double taxAmount = wageBeforeTax * taxRate;

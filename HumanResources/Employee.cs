@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace BetahnyPieShopClassess.HumanResources
 {
-    public abstract class Employee
+    public class Employee : IEmployee, IComparable
     {
 
-
+        private int id;
         private string firstName;
         private string lastName;
         private string email;
@@ -18,11 +18,17 @@ namespace BetahnyPieShopClassess.HumanResources
         private int numberOfHoursWorked;
         private double wage;
         private double? hourlyRate;
+
         private DateTime birthday;
 
 
         public static double taxRate = 0.15;
         private const double maxAmountHoursWOrked = 1000; //beacouse I can put the value later I must define const variable  s here
+
+        public int Id
+        {
+            get { return id; } set {  id = value; }
+        }
 
         public string FirstName  //it is Properties
         {
@@ -80,9 +86,10 @@ namespace BetahnyPieShopClassess.HumanResources
 
         }
 
-        public Employee(string first, string last, string em, DateTime bd, double? rate)
+        public Employee(int empId, string first, string last, string em, DateTime bd, double? rate)
         //po dodadaniu właściwości prywatnych zamiast publicznych pól zmianiamy, żeby z nich korzystać zmieniłem nazwy na wielką literę
         {
+            Id = empId;
             FirstName = first;
             LastName = last;
             Email = em;
@@ -93,7 +100,7 @@ namespace BetahnyPieShopClassess.HumanResources
 
         public void PerformWork()
         {
-            NumberOfHoursWorked++;
+            NumberOfHoursWorked++;  // sprawdzić czy się nie zmianilo wartość  NumberOfHoursWorked
 
             Console.WriteLine($"{FirstName} {LastName} is now working!");
         }
@@ -103,7 +110,18 @@ namespace BetahnyPieShopClassess.HumanResources
             Console.WriteLine($"{FirstName} {LastName} has stop working!");
         }
 
-        public abstract double ReceiveWage();
+        public double ReceiveWage()
+        {
+            double wageBeforeTax = NumberOfHoursWorked * 2 * HourlyRate.Value;
+            double taxAmount = wageBeforeTax * taxRate;
+
+            Wage = wageBeforeTax - taxAmount;
+
+            Console.WriteLine($"The wage for {NumberOfHoursWorked} hours of work is {Wage}.");
+            NumberOfHoursWorked = 0;
+
+            return Wage;
+        }
 
 
         public void DisplayEmployeeDetails()
@@ -121,6 +139,21 @@ namespace BetahnyPieShopClassess.HumanResources
         public virtual void GiveBonus()
         {
             Console.WriteLine($"{FirstName}{LastName} received a generic bonus of 100!");
+        }
+
+        public void GiveCompliment()
+        {
+            Console.WriteLine($"You've done a great job, {FirstName}");
+        }
+
+        public int CompareTo(object obj)
+        {
+            var otherEmployee = (Employee)obj;
+            if (Id > otherEmployee.Id)
+                return 1;
+            else if (Id < otherEmployee.Id) return -1;
+            else 
+                return 0;
         }
     }
 }

@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace BetahnyPieShopClassess.HumanResources
 {
-    public class Manager : Employee
+    public class Manager : Employee, IManager
     {
-        public Manager(string first, string last, string em, DateTime bd, double? rate):base(first, last, em, bd, rate)
+        public Manager(int id, string first, string last, string em, DateTime bd, double? rate):base(id, first, last, em, bd, rate)
         { 
         }
 
@@ -16,19 +16,19 @@ namespace BetahnyPieShopClassess.HumanResources
         {
             NumberOfHoursWorked += 10;
 
-            
+
             Console.WriteLine($"Manager {FirstName} {LastName} is now attending a long meeting that could have been an email");
         }
 
         public override void GiveBonus()
         {
-            if ( NumberOfHoursWorked > 5 )
-                Console.WriteLine($"Manager {FirstName} {LastName} received a generic bonus of 500!");   
+            if (NumberOfHoursWorked > 5)
+                Console.WriteLine($"Manager {FirstName} {LastName} received a generic bonus of 500!");
             else
                 Console.WriteLine($"Manager {FirstName} {LastName}  received a generic bonus of 250!");
         }
 
-        public override double ReceiveWage()
+        public double ReceiveWage()
         {
             double wageBeforeTax = NumberOfHoursWorked * 2 * HourlyRate.Value;
             double taxAmount = wageBeforeTax * taxRate;
