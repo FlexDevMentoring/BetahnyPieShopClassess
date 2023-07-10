@@ -100,7 +100,7 @@ namespace BetahnyPieShopClassess.HumanResources
 
         public void PerformWork()
         {
-            NumberOfHoursWorked++;  // sprawdzić czy się nie zmianilo wartość  NumberOfHoursWorked
+            NumberOfHoursWorked++;  
 
             Console.WriteLine($"{FirstName} {LastName} is now working!");
         }
@@ -154,7 +154,7 @@ namespace BetahnyPieShopClassess.HumanResources
             else if (Id < otherEmployee.Id) return -1;
             else 
                 return 0;
-            //jakiś nadomowy tekst 
+    
         }
     }
 }
