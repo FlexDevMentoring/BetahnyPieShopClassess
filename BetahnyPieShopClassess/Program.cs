@@ -21,7 +21,6 @@ namespace BetahnyPieShopClassess
 
             StoreManager kate = new StoreManager(100, "Kate", "Jordan", "jordannotmichael@snowball.be", new DateTime(1932, 2, 3), 12);
 
-
             List<IEmployee> employees = new List<IEmployee>
             {
                 bethany,
@@ -42,45 +41,6 @@ namespace BetahnyPieShopClassess
             mary.AttendMangementMeeting();
             mary.ReceiveWage();
 
-            //bethany.DisplayEmployeeDetails();
-            //bethany.PerformWork();
-            //bethany.PerformWork();
-            //bethany.PerformWork();
-            //bethany.PerformWork();
-            //bethany.ReceiveWage();
-
-            //mary.DisplayEmployeeDetails();
-            //mary.PerformWork();
-            //mary.ReceiveWage();
-            //mary.GiveBonus();
-
-
-            //mary.AttendMangementMeeting();
-
-            //bobJunior.ResearchNewPieTastes(10);
-            //bobJunior.PerformWork();
-            //bobJunior.ReceiveWage();
-            //bobJunior.GiveBonus();
-
-            //bethany.GiveBonus();
-            //mary.GiveBonus();
-
-            //Employee[] employees = new Employee[] { bethany, bobJunior, rich, mary, kate };
-
-
-            //foreach (var employee in employees)
-            //{
-            //    employee.DisplayEmployeeDetails();
-            //    employee.PerformWork();
-            //    employee.ReceiveWage();
-            //    employee.GiveBonus();
-            //    Console.WriteLine("\n");
-            //    Console.WriteLine(employee.ToString());
-            //    //employee.AttendingMangementMeeting();
-            //}
-
-            //object o1 = new Manager(12, "Object", "Jones", "mary@snowball.be", new DateTime(1965, 1, 14), 30);
-            //o1.ToString();
 
             Console.ReadLine();
         }

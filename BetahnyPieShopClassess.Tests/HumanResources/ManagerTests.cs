@@ -5,7 +5,7 @@ namespace BetahnyPieShopClassess.Tests.HumanResources
     public class ManagerTests
     {
         [Fact]
-        public void GiveBonus_ShouldPrintCorrectBonusAmount()
+        public void GiveBonus_ShouldPrintCorrectString_CorrectString()
         {
             //arrange
             
@@ -18,12 +18,10 @@ namespace BetahnyPieShopClassess.Tests.HumanResources
 
             //act
             manager.GiveBonus();
-            var output= stringWriter.ToString();
-
+            var output = stringWriter.ToString();
+            
             //assert
-            string expectedOutput = "Manager Mary Jones  received a generic bonus of 250!\r\n";
-            string actualOutput = stringWriter.ToString();
-            Assert.Equal(expectedOutput, output);
+            Assert.Equal($"Manager {"Mary"} {"Jones"}  received a generic bonus of 250!\r\n", output);
         }
 
 

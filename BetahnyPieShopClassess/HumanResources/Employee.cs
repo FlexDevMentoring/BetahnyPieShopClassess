@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -138,7 +139,7 @@ namespace BetahnyPieShopClassess.HumanResources
 
         public virtual void GiveBonus()
         {
-            Console.WriteLine($"{FirstName}{LastName} received a generic bonus of 100!");
+            Console.WriteLine($"{FirstName} {LastName} received a generic bonus of 100!");
         }
 
         public void GiveCompliment()
@@ -148,13 +149,23 @@ namespace BetahnyPieShopClassess.HumanResources
 
         public int CompareTo(object obj)
         {
+            if(obj is not Employee) return 0;
             var otherEmployee = (Employee)obj;
             if (Id > otherEmployee.Id)
+            {
                 return 1;
+            }
             else if (Id < otherEmployee.Id) return -1;
-            else 
+            else
                 return 0;
     
         }
+
+        public T GetEmployeeData<T>(Func<Employee, T> dataSelector)
+        {
+            return dataSelector(this);
+        }
+
+
     }
 }

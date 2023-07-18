@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
 
 namespace BetahnyPieShopClassess.HumanResources
 {
@@ -14,16 +16,34 @@ namespace BetahnyPieShopClassess.HumanResources
         }
         public double ReceiveWage()
         {
-            double wageBeforeTax = NumberOfHoursWorked * 2 * HourlyRate.Value;
-            double taxAmount = wageBeforeTax * taxRate;
+            try
+            {
+                double wageBeforeTax = NumberOfHoursWorked * 2 * HourlyRate.Value;
+                if (HourlyRate.Value == 0)
+                {
+                    throw new DivideByZeroException("HourlyRate cannot be zero");
+                }
 
-            Wage = wageBeforeTax - taxAmount;
 
-            Console.WriteLine($"The wage for {NumberOfHoursWorked} hours of work is {Wage}.");
-            NumberOfHoursWorked = 0;
 
-            return Wage;
+                double taxAmount = wageBeforeTax * taxRate;
+
+                Wage = wageBeforeTax - taxAmount;
+
+                Console.WriteLine($"The wage for {NumberOfHoursWorked} hours of work is {Wage}.");
+                NumberOfHoursWorked = 0;
+
+                return Wage;
+            }
+            
+            catch (DivideByZeroException ex)
+            {
+                Console.WriteLine($"An error occurred while calculating the wage: {ex.Message}");
+                throw;
+
+            }
         }
+            
     }
 
     

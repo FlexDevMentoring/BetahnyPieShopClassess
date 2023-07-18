@@ -178,8 +178,85 @@ namespace BetahnyPieShopClassess.Test.HumanResources
 
             //assert
 
-            Assert.Equal($"{"Artur"}{"Nowak"} received a generic bonus of 100!\r\n", output);
+            Assert.Equal($"{"Artur"} {"Nowak"} received a generic bonus of 100!\r\n", output);
         }
+
+        [Fact]
+        public void GetEmployeeData_ReturnsFirstName()
+        {
+            //Arrange
+            Employee employee = new Employee(1, "John", "John", "john@snowball.be", new DateTime(1932, 2, 3), 15.0);
+
+            //Act
+            string firstName = employee.GetEmployeeData(e => e.FirstName);
+            //Assert
+            Assert.Equal("John", firstName);
+        }
+
+        [Fact]
+        public void GetEmployeeData_ReturnsEmail()
+        {
+            //Arrange
+            Employee employee = new Employee(1, "John", "John", "john@snowball.be", new DateTime(1932, 2, 3), 15.0);
+
+            //Act
+            string email = employee.GetEmployeeData<string>(e => e.Email);
+            //Assert
+            Assert.Equal("john@snowball.be", email);
+        }
+
+        [Fact]
+        public void GetEmployeeData_ReturnsHourlyRate()
+        {
+            //Arrange
+            Employee employee = new Employee(1, "John", "John", "john@snowball.be", new DateTime(1932, 2, 3), 15.0);
+
+            //Act
+            double hourlyRate = employee.GetEmployeeData(e => e.HourlyRate ?? 0);
+            //Assert
+            Assert.Equal(15.0, hourlyRate);
+        }
+
+        [Fact]
+        public void CompareTo_ReturnsPosotive_WhenIdIsGreater()
+        {
+            //Arrange
+            Employee employee1 = new Employee(1, "John", "John", "john@snowball.be", new DateTime(1932, 2, 3), 15.0);
+            Employee employee2 = new Employee(2, "Jane", "Jane", "Jane@snowball.be", new DateTime(1934, 2, 3), 15.0);
+            //Act
+            int result = employee1.Id - employee2.Id;
+            //Assert
+            Assert.True(result < 0);
+        }
+        [Fact]
+        public void CompareTo_ReturnsNegative_WhenIdIsLess()
+        {
+            //Arrange
+            Employee employee1 = new Employee(1, "John", "John", "john@snowball.be", new DateTime(1932, 2, 3), 15.0);
+            Employee employee2 = new Employee(2, "Jane", "Jane", "Jane@snowball.be", new DateTime(1934, 2, 3), 15.0);
+            //Act
+            int result = employee2.CompareTo(employee1);
+            //Assert
+            Assert.True(result > 0);
+        }
+
+        [Fact]
+        public void CompareTo_ReturnsNegative_WhenIdEqualMinusOne()
+        {
+            //Arrange
+            Employee employee1 = new Employee(1, "John", "John", "john@snowball.be", new DateTime(1932, 2, 3), 15.0);
+            Employee employee2 = new Employee(2, "Jane", "Jane", "Jane@snowball.be", new DateTime(1934, 2, 3), 15.0);
+            //Act
+            int result = employee1.CompareTo(employee2);
+            //Assert
+            Assert.True(result == -1);
+        }
+       
+
+
+
+
+
 
 
 
