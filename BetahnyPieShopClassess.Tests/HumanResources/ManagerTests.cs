@@ -10,8 +10,6 @@ namespace BetahnyPieShopClassess.Tests.HumanResources
             //arrange
             
             Manager manager = new Manager(12345, "Mary", "Jones", "mary@snowball.be", new DateTime(1965, 1, 14), 30);
-            manager.FirstName = "Mary";
-            manager.LastName = "Jones";
             
             var stringWriter = new StringWriter();
             Console.SetOut(stringWriter);
@@ -21,7 +19,7 @@ namespace BetahnyPieShopClassess.Tests.HumanResources
             var output = stringWriter.ToString();
             
             //assert
-            Assert.Equal($"Manager {"Mary"} {"Jones"}  received a generic bonus of 250!\r\n", output);
+            Assert.Equal($"Manager Mary Jones  received a generic bonus of 250!\r\n", output);
         }
 
 

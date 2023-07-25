@@ -50,8 +50,7 @@ namespace BetahnyPieShopClassess.Test.HumanResources
         {
             //arrange
             Employee employee = new Employee(1, "Artur", "Nowak", "bartek@nowak.pl", new DateTime(2002, 12, 20), 10);  //czy muszê w testach tworzyæ innego pracownika?
-            employee.FirstName = "Artur";
-            employee.LastName = "Nowak";
+           
 
             var stringWriter = new StringWriter();
             Console.SetOut(stringWriter);
@@ -64,13 +63,13 @@ namespace BetahnyPieShopClassess.Test.HumanResources
 
             //assert
 
-            Assert.Equal($"{"Artur"} {"Nowak"} has stop working!\r\n", output);
+            Assert.Equal($"Artur Nowak has stop working!\r\n", output);
 
 
 
         }
         [Fact]
-        public void ReceiveWage_CheckREceiveWageAmount_WageAmount()
+        public void ReceiveWage_CheckReceiveWageAmount_WageAmount()
         {
             //arrange
             Employee employee = new Employee(1, "Artur", "Nowak", "bartek@nowak.pl", new DateTime(2002, 12, 20), 10);
@@ -95,10 +94,7 @@ namespace BetahnyPieShopClassess.Test.HumanResources
         {
             //arrange
             Employee employee = new Employee(1, "Artur", "Nowak", "bartek@nowak.pl", new DateTime(2002, 12, 20), 10); 
-            employee.FirstName = "Artur";
-            employee.LastName = "Nowak";
-            employee.Email = "bartek@nowak.pl";
-            employee.Birthday = new DateTime(2002, 12, 20);
+        
             Employee.taxRate = 10;
 
             var stringWriter = new StringWriter();
@@ -112,9 +108,9 @@ namespace BetahnyPieShopClassess.Test.HumanResources
 
             //assert
 
-            Assert.Equal($"First name: {"Artur"}\nLast name: {"Nowak"}\nEmail: " +
-                $"{"bartek@nowak.pl"}\nBirthday: {"20/12/2002"}\n" +
-                $"TaxRate: {10}\r\n", output);
+            Assert.Equal($"First name: Artur\nLast name: Nowak\nEmail: " +
+                $"bartek@nowak.pl\nBirthday: 20/12/2002\n" +
+                $"TaxRate: 10\r\n", output);
         }
 
         [Fact]
@@ -134,7 +130,7 @@ namespace BetahnyPieShopClassess.Test.HumanResources
 
             //assert
 
-            Assert.Equal($"The current tax rate is {15}\r\n", output);
+            Assert.Equal($"The current tax rate is 15\r\n", output);
         }
 
         [Fact]
@@ -153,7 +149,7 @@ namespace BetahnyPieShopClassess.Test.HumanResources
 
             //assert
 
-            Assert.Equal($"You've done a great job, {"Artur"}\r\n", output);
+            Assert.Equal($"You've done a great job, Artur\r\n", output);
 
         }
 
@@ -166,9 +162,7 @@ namespace BetahnyPieShopClassess.Test.HumanResources
         {
             //arrange
             Employee employee = new Employee(1, "Artur", "Nowak", "bartek@nowak.pl", new DateTime(2002, 12, 20), 10);
-            employee.FirstName = "Artur";
-            employee.LastName = "Nowak";
-
+            
             var stringWriter = new StringWriter();
             Console.SetOut(stringWriter);
 
@@ -178,11 +172,11 @@ namespace BetahnyPieShopClassess.Test.HumanResources
 
             //assert
 
-            Assert.Equal($"{"Artur"} {"Nowak"} received a generic bonus of 100!\r\n", output);
+            Assert.Equal($"Artur Nowak received a generic bonus of 100!\r\n", output);
         }
 
         [Fact]
-        public void GetEmployeeData_ReturnsFirstName()
+        public void GetEmployeeData_ReturnsFirstName_FirstName()
         {
             //Arrange
             Employee employee = new Employee(1, "John", "John", "john@snowball.be", new DateTime(1932, 2, 3), 15.0);
@@ -194,7 +188,7 @@ namespace BetahnyPieShopClassess.Test.HumanResources
         }
 
         [Fact]
-        public void GetEmployeeData_ReturnsEmail()
+        public void GetEmployeeData_ReturnsEmail_Email()
         {
             //Arrange
             Employee employee = new Employee(1, "John", "John", "john@snowball.be", new DateTime(1932, 2, 3), 15.0);
@@ -206,7 +200,7 @@ namespace BetahnyPieShopClassess.Test.HumanResources
         }
 
         [Fact]
-        public void GetEmployeeData_ReturnsHourlyRate()
+        public void GetEmployeeData_ReturnsHourlyRate_HourlyRate()
         {
             //Arrange
             Employee employee = new Employee(1, "John", "John", "john@snowball.be", new DateTime(1932, 2, 3), 15.0);
@@ -218,7 +212,7 @@ namespace BetahnyPieShopClassess.Test.HumanResources
         }
 
         [Fact]
-        public void CompareTo_ReturnsPosotive_WhenIdIsGreater()
+        public void CompareTo_ReturnsPositive_IdIsGreater()
         {
             //Arrange
             Employee employee1 = new Employee(1, "John", "John", "john@snowball.be", new DateTime(1932, 2, 3), 15.0);
@@ -229,7 +223,7 @@ namespace BetahnyPieShopClassess.Test.HumanResources
             Assert.True(result < 0);
         }
         [Fact]
-        public void CompareTo_ReturnsNegative_WhenIdIsLess()
+        public void CompareTo_ReturnsNegative_IdIsLess()
         {
             //Arrange
             Employee employee1 = new Employee(1, "John", "John", "john@snowball.be", new DateTime(1932, 2, 3), 15.0);
@@ -241,7 +235,7 @@ namespace BetahnyPieShopClassess.Test.HumanResources
         }
 
         [Fact]
-        public void CompareTo_ReturnsNegative_WhenIdEqualMinusOne()
+        public void CompareTo_ReturnsNegative_IdEqualMinusOne()
         {
             //Arrange
             Employee employee1 = new Employee(1, "John", "John", "john@snowball.be", new DateTime(1932, 2, 3), 15.0);

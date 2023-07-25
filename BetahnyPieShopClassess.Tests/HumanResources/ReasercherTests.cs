@@ -5,7 +5,7 @@ namespace BetahnyPieShopClassess.Tests.HumanResources
     public class ReasercherTests
     {
         [Fact]
-        public void ResearcherNewPieTastes_IncrementsNumberOfHoursWorked()
+        public void ResearcherNewPieTastes_IncrementsNumberOfHoursWorked_UpdateNumberOfHoursWorked()
         {
             //arrange
 

@@ -5,7 +5,7 @@ namespace BetahnyPieShopClassess.Tests.HumanResources
     public class StoreManagerTests
     {
         [Fact]
-        public void ReceiveWage_ReturnsZero_WhenNumberOfHoursWorkedIsZero()
+        public void ReceiveWage_ReturnsZero_NumberOfHoursWorkedIsZero()
         {
             //arrange
 

@@ -7,7 +7,7 @@ namespace BetahnyPieShopClassess.Tests.HumanResources
     {
 
         [Fact]
-        public void ReceiveWage_ReturnsCorrectWage()
+        public void ReceiveWage_ReturnsCorrectWage_Wage()
         {
             //arrange
             Developer developer = new Developer(1, "Artur", "Nowak", "bartek@nowak.pl", new DateTime(2002, 12, 20), 15.0);
@@ -25,7 +25,7 @@ namespace BetahnyPieShopClassess.Tests.HumanResources
 
         }
         [Fact]
-        public void ReceiveWage_ThrowsDivideByZeroException_WhenHourlyRateIsZero()
+        public void ReceiveWage_ThrowsDivideByZeroException_HourlyRateIsZero()
         {
             //arrange
             Developer developer = new Developer(1, "Artur", "Nowak", "bartek@nowak.pl", new DateTime(2002, 12, 20), 0.0);
